@@ -1,10 +1,10 @@
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public abstract class Player {
+    protected final static int NOT_ATTR_SET_DEFAULT = 22;
     private final int INITIAL_HEALTH;
     private int health;
     private int strength;
@@ -22,6 +22,7 @@ public abstract class Player {
         int actualLives = this.getLives()-1;
 
         if (actualLives < 1) {
+            this.setLives(0);
             System.out.println("This character is dead");
         } else {
             this.setHealth(INITIAL_HEALTH);
@@ -29,8 +30,9 @@ public abstract class Player {
         }
     }
 
-    private void attack(Player playerToAttack) {
+    public void attack(Player playerToAttack) {
         playerToAttack.setHealth(playerToAttack.getHealth()-this.getStrength());
+        playerToAttack.checkHealth();
     }
 
     private void checkHealth() {

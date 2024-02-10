@@ -11,7 +11,7 @@ public class Wizard extends Player {
         setSpell(spell);
     }
 
-    private Elf convertToElf() {
-        return new Elf(this.getHealth(), this.getStrength(), this.getLives(), 22);
+    public Elf convertToElf() {
+        return new Elf(this.getHealth(), this.getStrength(), this.getLives(), NOT_ATTR_SET_DEFAULT);
     }
 }
